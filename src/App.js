@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import configureStore from './config/configureStore';
+import { ToastContainer } from 'react-toastify';
 import { Provider } from 'react-redux';
-import Routes from './Routes';
-import ScrollToTop from './utils/ScrollToTop';
+import 'react-toastify/dist/ReactToastify.css';
+
 import './assets/base.scss';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -22,7 +22,7 @@ import {
   faDiscord,
   faSlack,
   faDribbble,
-  faGithub
+  faGithub,
 } from '@fortawesome/free-brands-svg-icons';
 import {
   far,
@@ -62,7 +62,7 @@ import {
   faFileCode,
   faFileAlt,
   faEye,
-  faChartBar
+  faChartBar,
 } from '@fortawesome/free-regular-svg-icons';
 import {
   fas,
@@ -128,8 +128,12 @@ import {
   faArrowLeft,
   faStar,
   faSignOutAlt,
-  faLink
+  faLink,
 } from '@fortawesome/free-solid-svg-icons';
+import ScrollToTop from './utils/ScrollToTop';
+import Routes from './Routes';
+import configureStore from './config/configureStore';
+
 library.add(
   far,
   faSquare,
@@ -255,6 +259,7 @@ library.add(
 
 const store = configureStore();
 
+// eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
   render() {
     return (
@@ -263,6 +268,7 @@ class App extends Component {
           <CssBaseline />
           <ScrollToTop>
             <Routes />
+            <ToastContainer autoClose={3000} className="toast-container" />
           </ScrollToTop>
         </BrowserRouter>
       </Provider>

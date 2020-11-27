@@ -14,14 +14,14 @@ import {
   LeftSidebar,
   CollapsedSidebar,
   MinimalLayout,
-  PresentationLayout
+  PresentationLayout,
 } from './layout-blueprints';
 
 // Example Pages
 
-import PagesLogin from './example-pages/PagesLogin';
-import PagesRegister from './example-pages/PagesRegister';
-import PagesRecoverPassword from './example-pages/PagesRecoverPassword';
+import PagesLogin from './views/Pages/PageLogin';
+import PagesRegister from './views/Pages/PageRegister';
+import PagesRecoverPassword from './views/Pages/PageRecoverPassword';
 import PagesProfile from './example-pages/PagesProfile';
 import PagesInvoice from './example-pages/PagesInvoice';
 import PagesError404 from './example-pages/PagesError404';
@@ -165,22 +165,22 @@ const Routes = () => {
   const pageVariants = {
     initial: {
       opacity: 0,
-      scale: 0.99
+      scale: 0.99,
     },
     in: {
       opacity: 1,
-      scale: 1
+      scale: 1,
     },
     out: {
       opacity: 0,
-      scale: 1.01
-    }
+      scale: 1.01,
+    },
   };
 
   const pageTransition = {
     type: 'tween',
     ease: 'anticipate',
-    duration: 0.4
+    duration: 0.4,
   };
 
   const SuspenseLoading = () => {
@@ -228,7 +228,7 @@ const Routes = () => {
                 '/ApplicationsChat',
                 '/ApplicationsContacts',
                 '/ApplicationsFileManager',
-                '/ApplicationsMail'
+                '/ApplicationsMail',
               ]}>
               <CollapsedSidebar>
                 <Switch location={location} key={location.pathname}>
@@ -270,7 +270,7 @@ const Routes = () => {
                 '/PagesRecoverPassword',
                 '/PagesError404',
                 '/PagesError500',
-                '/PagesError505'
+                '/PagesError505',
               ]}>
               <MinimalLayout>
                 <Switch location={location} key={location.pathname}>
@@ -388,7 +388,7 @@ const Routes = () => {
                 '/ChartjsCharts',
                 '/SparklinesCharts',
                 '/Maps',
-                '/ListGroups'
+                '/ListGroups',
               ]}>
               <LeftSidebar>
                 <Switch location={location} key={location.pathname}>

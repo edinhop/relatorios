@@ -1,4 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import hero3 from '../../../assets/images/hero-bg/hero-3.jpg';
+import { NavLink as RouterLink } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { isEmail } from 'validator';
+
+//import { LoginService } from '../../../services/loginService';
 
 import {
   Grid,
@@ -11,12 +17,42 @@ import {
   Card,
   CardContent,
   Button,
-  FormControl
+  FormControl,
 } from '@material-ui/core';
 
 import MailOutlineTwoToneIcon from '@material-ui/icons/MailOutlineTwoTone';
 import LockTwoToneIcon from '@material-ui/icons/LockTwoTone';
 
+/*const handleSubmit = e => {
+  e.preventDefault();
+  console.log('cliquei no botao');
+  if (hasErrors(email, password)) return;
+
+  LoginService.login(email, password)
+    .then(res => {
+      console.log(res.data);
+      alert('logou');
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};*/
+
+/*const hasErrors = (email, password) => {
+  let formErrors = false;
+
+  if (!isEmail(email)) {
+    formErrors = true;
+    toast.error('E-mail inválido.');
+  }
+
+  if (password.length < 3 || password.length > 50) {
+    formErrors = true;
+    toast.error('Senha inválida.');
+  }
+
+  return formErrors;
+};*/
 
 const LivePreviewExample = () => {
   const [checked1, setChecked1] = React.useState(true);
@@ -24,13 +60,36 @@ const LivePreviewExample = () => {
   const handleChange1 = event => {
     setChecked1(event.target.checked);
   };
+
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    // eslint-disable-next-line
+  let formErrors = false;
+
+    if (!isEmail) {
+      formErrors = true;
+      toast.error('Coloque um E-mail Válido!');
+    }
+
+    if (password.length < 6 || password.length > 50) {
+      formErrors = true;
+      toast.error('Sua Senha deve ter entre 5 e 50 caracteres!');
+    }
+  };
   return (
-    <Fragment>
+    <>
       <div className="app-wrapper min-vh-100">
         <div className="app-main flex-column">
           <div className="app-content p-0">
             <div className="app-content--inner d-flex align-items-center">
               <div className="flex-grow-1 w-100 d-flex align-items-center">
+                <div
+                  className="bg-composed-wrapper--image"
+                  style={{ backgroundImage: 'url(' + hero3 + ')' }}
+                />
                 <div className="bg-composed-wrapper--content py-5">
                   <Container maxWidth="lg">
                     <Grid container spacing={5}>
@@ -38,8 +97,8 @@ const LivePreviewExample = () => {
                         item
                         xs={12}
                         lg={5}
-                        className="d-none d-xl-flex align-items-center">
-                      </Grid>
+                        className="d-none d-xl-flex align-items-center"
+                      />
                       <Grid
                         item
                         xs={12}
@@ -51,9 +110,7 @@ const LivePreviewExample = () => {
                           </h1>
                         </span>
                         <Card className="m-0 w-100 p-0 border-0">
-                          <div className="card-header d-block p-3 mx-2 mb-0 mt-2 rounded border-0">
-            
-                          </div>
+                          <div className="card-header d-block p-3 mx-2 mb-0 mt-2 rounded border-0" />
                           <CardContent className="p-3">
                             <div className="text-center text-black-50 mb-3">
                               <span>Entre com as suas Credenciais!</span>
@@ -62,9 +119,12 @@ const LivePreviewExample = () => {
                               <div className="mb-3">
                                 <FormControl className="w-100">
                                   <InputLabel htmlFor="input-with-icon-adornment">
-                                    Email address
+                                    Endereço de Email
                                   </InputLabel>
                                   <Input
+                                    type="email"
+                                    value={email}
+                                    onChange={e => setEmail(e.target.value)}
                                     fullWidth
                                     id="input-with-icon-adornment"
                                     startAdornment={
@@ -81,9 +141,11 @@ const LivePreviewExample = () => {
                                     Password
                                   </InputLabel>
                                   <Input
+                                    type="password"
+                                    value={password}
+                                    onChange={e => setPassword(e.target.value)}
                                     id="standard-adornment-password"
                                     fullWidth
-                                    type="password"
                                     startAdornment={
                                       <InputAdornment position="start">
                                         <LockTwoToneIcon />
@@ -107,11 +169,29 @@ const LivePreviewExample = () => {
                               </div>
                               <div className="text-center">
                                 <Button
+                                  type="submit"
+                                  onClick={handleSubmit}
                                   color="primary"
                                   variant="contained"
                                   size="large"
                                   className="my-2">
-                                  Sign in
+                                  Fazer Login
+                                </Button>
+                              </div>
+                              <div>
+                                <Button
+                                  component={RouterLink}
+                                  to="/PagesRecoverPassword"
+                                  className="my-2">
+                                  Esqueci minha senha
+                                </Button>
+                              </div>
+                              <div>
+                                <Button
+                                  component={RouterLink}
+                                  to="/PagesRegister"
+                                  className="my-2">
+                                  Cadastrar uma nova Conta
                                 </Button>
                               </div>
                             </form>
@@ -126,7 +206,7 @@ const LivePreviewExample = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 export default LivePreviewExample;

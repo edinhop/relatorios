@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { toast } from 'react-toastify';
+import { isEmail } from 'validator';
 
 import {
   Grid,
   InputAdornment,
-  IconButton,
   Card,
   Button,
-  Tooltip,
-  TextField
+  TextField,
 } from '@material-ui/core';
 
 import MailOutlineTwoToneIcon from '@material-ui/icons/MailOutlineTwoTone';
@@ -15,8 +15,20 @@ import MailOutlineTwoToneIcon from '@material-ui/icons/MailOutlineTwoTone';
 import hero3 from '../../../assets/images/hero-bg/hero-3.jpg';
 
 export default function LivePreviewExample() {
+  const [email, setEmail] = React.useState('');
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    // eslint-disable-next-line
+  let formErrors = false;
+
+    if (!isEmail) {
+      formErrors = true;
+      toast.error('Coloque um E-mail Válido!');
+    }
+  }
   return (
-    <Fragment>
+    <>
       <div className="app-wrapper bg-white">
         <div className="app-main">
           <div className="app-content p-0">
@@ -27,7 +39,7 @@ export default function LivePreviewExample() {
                     <div className="flex-grow-1 w-100 d-flex align-items-center">
                       <div
                         className="bg-composed-wrapper--image"
-                        style={{ backgroundImage: 'url(' + hero3 + ')' }}
+                        style={{ backgroundImage: `url(${hero3})` }}
                       />
                       <div className="bg-composed-wrapper--bg bg-night-sky opacity-5" />
                       <div className="bg-composed-wrapper--content text-center py-5">
@@ -42,13 +54,16 @@ export default function LivePreviewExample() {
                             Recuperar Senha
                           </h1>
                           <h3 className="font-size-lg line-height-sm font-weight-light d-block px-3 mb-5 text-white-50">
-                          Digite seu nome de usuário ou endereço de e-mail e enviaremos um link
-                           para redefinir sua senha.
+                            Digite seu nome de usuário ou endereço de e-mail e
+                            enviaremos um link para redefinir sua senha.
                           </h3>
                           <Card className="p-5 mx-5 text-center">
                             <TextField
                               fullWidth
                               className="mt-0"
+                              value={email}
+                              onChange={e => setEmail(e.target.value)}
+                              type="email"
                               margin="dense"
                               variant="outlined"
                               InputProps={{
@@ -56,12 +71,14 @@ export default function LivePreviewExample() {
                                   <InputAdornment position="start">
                                     <MailOutlineTwoToneIcon />
                                   </InputAdornment>
-                                )
+                                ),
                               }}
                             />
                             <Button
                               variant="contained"
                               className="mt-4"
+                              type="submit"
+                              onSubmit={handleSubmit}
                               size="large"
                               color="primary">
                               <span className="btn-wrapper--label">
@@ -72,8 +89,7 @@ export default function LivePreviewExample() {
                         </Grid>
                       </div>
                     </div>
-                    <div className="hero-footer pb-4">
-                    </div>
+                    <div className="hero-footer pb-4" />
                   </div>
                 </div>
               </div>
@@ -81,6 +97,6 @@ export default function LivePreviewExample() {
           </div>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 }
