@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:8080';
+const baseURL = process.env.REACT_APP_API_URL;
 
 export const api = axios.create({
   baseURL,
-  headers: {
-    'Content-type': 'application/x-www-form-urlencoded',
-  },
 });
 
 api.interceptors.request.use(

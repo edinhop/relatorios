@@ -13,19 +13,23 @@ import {
 import MailOutlineTwoToneIcon from '@material-ui/icons/MailOutlineTwoTone';
 
 import hero3 from '../../../assets/images/hero-bg/hero-3.jpg';
+import { LoginService } from 'services/loginService';
 
 export default function LivePreviewExample() {
   const [email, setEmail] = React.useState('');
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    // eslint-disable-next-line
-  let formErrors = false;
-
-    if (!isEmail) {
-      formErrors = true;
+  function handleSubmit() {
+    if (!isEmail(email)) {
       toast.error('Coloque um E-mail Válido!');
+      return false;
     }
+    LoginService.resetPassword(email)
+      .then(() => {
+        toast.success('Email enviado com sucesso!');
+      })
+      .catch(() => {
+        toast.error('Não existe um usuário com este email cadastrado');
+      });
   }
   return (
     <>
@@ -78,7 +82,7 @@ export default function LivePreviewExample() {
                               variant="contained"
                               className="mt-4"
                               type="submit"
-                              onSubmit={handleSubmit}
+                              onClick={handleSubmit}
                               size="large"
                               color="primary">
                               <span className="btn-wrapper--label">

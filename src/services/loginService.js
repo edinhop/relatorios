@@ -1,16 +1,14 @@
 import { api } from './api';
 
-const CLIENT = 'my-react-app';
-const SECRET_KEY = '@321';
-
 export const LoginService = {
   login: async (email, senha) => {
-    const PATH = `?grant_type=password&username=${email}&password=${senha}`;
-
-    const headers = {
-      Authorization: `Basic ${btoa(`${CLIENT}:${SECRET_KEY}`)}`,
+    const credentials = {
+      email: email,
+      password: senha,
     };
-
-    return await api.post(`oauth/token${PATH}`, {}, { headers });
+    return await api.post('/login', credentials);
+  },
+  resetPassword: async email => {
+    return await api.post('/auth/forgot_password', { email });
   },
 };

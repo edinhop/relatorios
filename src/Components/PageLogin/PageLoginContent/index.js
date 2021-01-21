@@ -3,8 +3,8 @@ import hero3 from '../../../assets/images/hero-bg/hero-3.jpg';
 import { NavLink as RouterLink } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-
-//import { LoginService } from '../../../services/loginService';
+import { useHistory } from 'react-router-dom';
+import { LoginService } from '../../../services/loginService';
 
 import {
   Grid,
@@ -55,19 +55,19 @@ import LockTwoToneIcon from '@material-ui/icons/LockTwoTone';
 };*/
 
 const LivePreviewExample = () => {
+  const history = useHistory();
   const [checked1, setChecked1] = React.useState(true);
 
   const handleChange1 = event => {
     setChecked1(event.target.checked);
   };
 
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('edinho.pereira95@gmail.com');
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    // eslint-disable-next-line
-  let formErrors = false;
+  const [password, setPassword] = React.useState('123456');
+
+  const hasErrors = () => {
+    let formErrors = false;
 
     if (!isEmail) {
       formErrors = true;
@@ -78,6 +78,21 @@ const LivePreviewExample = () => {
       formErrors = true;
       toast.error('Sua Senha deve ter entre 5 e 50 caracteres!');
     }
+    return formErrors;
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (hasErrors()) {
+      return false;
+    }
+
+    LoginService.login(email, password)
+      .then(() => {
+        history.push('/DashboardDefault');
+      })
+      .catch(() => alert('error'));
   };
   return (
     <>
@@ -181,17 +196,9 @@ const LivePreviewExample = () => {
                               <div>
                                 <Button
                                   component={RouterLink}
-                                  to="/PagesRecoverPassword"
+                                  to="/forgot-password"
                                   className="my-2">
                                   Esqueci minha senha
-                                </Button>
-                              </div>
-                              <div>
-                                <Button
-                                  component={RouterLink}
-                                  to="/PagesRegister"
-                                  className="my-2">
-                                  Cadastrar uma nova Conta
                                 </Button>
                               </div>
                             </form>

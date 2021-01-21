@@ -215,7 +215,7 @@ const Routes = () => {
               path={[
                 '/PagesLogin',
                 '/PagesRegister',
-                '/PagesRecoverPassword',
+                '/forgot-password',
                 '/PagesError404',
                 '/PagesError500',
                 '/PagesError505',
@@ -231,7 +231,7 @@ const Routes = () => {
                     <Route path="/PagesLogin" component={PagesLogin} />
                     <Route path="/PagesRegister" component={PagesRegister} />
                     <Route
-                      path="/PagesRecoverPassword"
+                      path="/forgot-password"
                       component={PagesRecoverPassword}
                     />
                     <Route path="/PagesError404" component={PagesError404} />
