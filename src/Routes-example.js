@@ -12,6 +12,7 @@ import MuiTheme from './theme';
 
 import {
   LeftSidebar,
+  CollapsedSidebar,
   MinimalLayout,
   PresentationLayout,
 } from './layout-blueprints';
@@ -77,7 +78,17 @@ const DashboardCrmManager = lazy(() =>
   import('./example-pages/DashboardCrmManager')
 );
 const DashboardContent = lazy(() => import('./example-pages/DashboardContent'));
-
+const ApplicationsCalendar = lazy(() =>
+  import('./example-pages/ApplicationsCalendar')
+);
+const ApplicationsChat = lazy(() => import('./example-pages/ApplicationsChat'));
+const ApplicationsContacts = lazy(() =>
+  import('./example-pages/ApplicationsContacts')
+);
+const ApplicationsFileManager = lazy(() =>
+  import('./example-pages/ApplicationsFileManager')
+);
+const ApplicationsMail = lazy(() => import('./example-pages/ApplicationsMail'));
 const ApplicationsProjects = lazy(() =>
   import('./example-pages/ApplicationsProjects')
 );
@@ -195,8 +206,8 @@ const Routes = () => {
       <AnimatePresence>
         <Suspense fallback={<SuspenseLoading />}>
           <Switch>
-            <Redirect exact from="/" to="/login" />
-            <Route path={['/login']}>
+            <Redirect exact from="/" to="/PagesLogin" />
+            <Route path={['/PagesLogin']}>
               <PresentationLayout>
                 <Switch location={location} key={location.pathname}>
                   <motion.div
@@ -205,10 +216,51 @@ const Routes = () => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route path="/login" component={PagesLogin} />
+                    <Route path="/PagesLogin" component={PagesLogin} />
                   </motion.div>
                 </Switch>
               </PresentationLayout>
+            </Route>
+
+            <Route
+              path={[
+                '/ApplicationsCalendar',
+                '/ApplicationsChat',
+                '/ApplicationsContacts',
+                '/ApplicationsFileManager',
+                '/ApplicationsMail',
+              ]}>
+              <CollapsedSidebar>
+                <Switch location={location} key={location.pathname}>
+                  <motion.div
+                    initial="initial"
+                    animate="in"
+                    exit="out"
+                    variants={pageVariants}
+                    transition={pageTransition}>
+                    <Route
+                      path="/ApplicationsCalendar"
+                      component={ApplicationsCalendar}
+                    />
+                    <Route
+                      path="/ApplicationsChat"
+                      component={ApplicationsChat}
+                    />
+                    <Route
+                      path="/ApplicationsContacts"
+                      component={ApplicationsContacts}
+                    />
+                    <Route
+                      path="/ApplicationsFileManager"
+                      component={ApplicationsFileManager}
+                    />
+                    <Route
+                      path="/ApplicationsMail"
+                      component={ApplicationsMail}
+                    />
+                  </motion.div>
+                </Switch>
+              </CollapsedSidebar>
             </Route>
 
             <Route
