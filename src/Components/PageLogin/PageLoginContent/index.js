@@ -62,9 +62,9 @@ const LivePreviewExample = () => {
     setChecked1(event.target.checked);
   };
 
-  const [email, setEmail] = React.useState('edinho.pereira95@gmail.com');
+  const [email, setEmail] = React.useState('');
 
-  const [password, setPassword] = React.useState('123456');
+  const [password, setPassword] = React.useState('');
 
   const hasErrors = () => {
     let formErrors = false;
@@ -84,7 +84,8 @@ const LivePreviewExample = () => {
   const handleSubmit = e => {
     e.preventDefault();
 
-    if (hasErrors()) {
+    if (hasErrors(email)) {
+      toast.error('Coloque um E-mail Válido!');
       return false;
     }
 
@@ -92,7 +93,9 @@ const LivePreviewExample = () => {
       .then(() => {
         history.push('/DashboardDefault');
       })
-      .catch(() => alert('error'));
+      .catch(() => {
+        toast.error('Não existe um usuário com este email cadastrado');
+      });
   };
   return (
     <>
