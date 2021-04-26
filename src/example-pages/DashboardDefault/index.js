@@ -14,7 +14,7 @@ export default function DashboardDefault() {
   return (
     <Fragment>
       <PageTitle
-        titleHeading="Default"
+        titleHeading="padrão"
         titleDescription="This is a dashboard page example built using this template."
       />
 

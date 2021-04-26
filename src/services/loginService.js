@@ -11,4 +11,5 @@ export const LoginService = {
   resetPassword: async email => {
     return await api.post('/auth/forgot_password', { email });
   },
+  isAuthenticated: () => localStorage.getItem('TOKEN_KEY') !== null,
 };

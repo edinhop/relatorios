@@ -12,7 +12,7 @@ const LeftSidebar = props => {
     sidebarToggle,
     sidebarFixed,
     footerFixed,
-    contentBackground
+    contentBackground,
   } = props;
 
   return (
@@ -21,14 +21,14 @@ const LeftSidebar = props => {
         <Header />
         <div
           className={clsx('app-main', {
-            'app-main-sidebar-static': !sidebarFixed
+            'app-main-sidebar-static': !sidebarFixed,
           })}>
           <Sidebar />
           <div
             className={clsx('app-content', {
               'app-content-sidebar-collapsed': sidebarToggle,
               'app-content-sidebar-fixed': sidebarFixed,
-              'app-content-footer-fixed': footerFixed
+              'app-content-footer-fixed': footerFixed,
             })}>
             <div className="app-content--inner">
               <div className="app-content--inner__wrapper">{children}</div>
@@ -42,7 +42,7 @@ const LeftSidebar = props => {
 };
 
 LeftSidebar.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const mapStateToProps = state => ({
@@ -56,7 +56,7 @@ const mapStateToProps = state => ({
 
   footerFixed: state.ThemeOptions.footerFixed,
 
-  contentBackground: state.ThemeOptions.contentBackground
+  contentBackground: state.ThemeOptions.contentBackground,
 });
 
 export default connect(mapStateToProps)(LeftSidebar);

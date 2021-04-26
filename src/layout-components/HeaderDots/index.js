@@ -14,7 +14,7 @@ import {
   Popover,
   Badge,
   Button,
-  Divider
+  Divider,
 } from '@material-ui/core';
 
 import avatar1 from '../../assets/images/avatars/avatar1.jpg';
@@ -47,40 +47,40 @@ function TabPanel(props) {
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
 };
 
 export default function HeaderDots() {
   const chart16Options = {
     chart: {
       toolbar: {
-        show: false
+        show: false,
       },
       sparkline: {
-        enabled: true
+        enabled: true,
       },
-      stacked: true
+      stacked: true,
     },
     dataLabels: {
-      enabled: true
+      enabled: true,
     },
     plotOptions: {
       bar: {
         horizontal: false,
-        columnWidth: '65%'
-      }
+        columnWidth: '65%',
+      },
     },
     stroke: {
       show: false,
       width: 0,
-      colors: ['transparent']
+      colors: ['transparent'],
     },
     colors: ['#7a7b97', 'rgba(122, 123, 151, 0.15)'],
     fill: {
-      opacity: 1
+      opacity: 1,
     },
     legend: {
-      show: false
+      show: false,
     },
     labels: [
       'Monday',
@@ -93,26 +93,26 @@ export default function HeaderDots() {
       'Last week',
       'Last month',
       'Last year',
-      'Last quarter'
+      'Last quarter',
     ],
     xaxis: {
       crosshairs: {
-        width: 1
-      }
+        width: 1,
+      },
     },
     yaxis: {
-      min: 0
-    }
+      min: 0,
+    },
   };
   const chart16Data = [
     {
       name: 'Net Profit',
-      data: [2.3, 3.1, 4.0, 3.8, 5.1, 3.6, 4.0, 3.8, 5.1, 3.6, 3.2]
+      data: [2.3, 3.1, 4.0, 3.8, 5.1, 3.6, 4.0, 3.8, 5.1, 3.6, 3.2],
     },
     {
       name: 'Net Loss',
-      data: [2.1, 2.1, 3.0, 2.8, 4.0, 3.8, 5.1, 3.6, 4.1, 2.6, 1.2]
-    }
+      data: [2.1, 2.1, 3.0, 2.8, 4.0, 3.8, 5.1, 3.6, 4.1, 2.6, 1.2],
+    },
   ];
 
   const [anchorEl1, setAnchorEl1] = React.useState(null);
@@ -170,14 +170,14 @@ export default function HeaderDots() {
               onClose={handleClose1}
               anchorOrigin={{
                 vertical: 'bottom',
-                horizontal: 'center'
+                horizontal: 'center',
               }}
               transformOrigin={{
                 vertical: 'top',
-                horizontal: 'center'
+                horizontal: 'center',
               }}
               classes={{
-                paper: 'app-header-dots'
+                paper: 'app-header-dots',
               }}>
               <div className="popover-custom-xl overflow-hidden">
                 <div className="bg-composed-wrapper bg-midnight-bloom border-0 text-center rounded-sm m-2">
@@ -356,7 +356,7 @@ export default function HeaderDots() {
                     variant="dot"
                     anchorOrigin={{
                       vertical: 'top',
-                      horizontal: 'right'
+                      horizontal: 'right',
                     }}>
                     <Button
                       color="primary"
@@ -387,11 +387,11 @@ export default function HeaderDots() {
             onClose={handleClose2}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'center'
+              horizontal: 'center',
             }}
             transformOrigin={{
               vertical: 'top',
-              horizontal: 'center'
+              horizontal: 'center',
             }}>
             <ul className="list-group list-group-flush text-left bg-transparent">
               <li className="list-group-item rounded-top">
@@ -400,13 +400,13 @@ export default function HeaderDots() {
                     overlap="circle"
                     anchorOrigin={{
                       vertical: 'bottom',
-                      horizontal: 'right'
+                      horizontal: 'right',
                     }}
                     variant="dot">
                     <Avatar alt="Travis Howard" src={avatar7} />
                   </Badge>
                   <div className="pl-2">
-                    <span className="pb-1 d-block">Emma Taylor</span>
+                    <span className="pb-1 d-block">Edinho</span>
                     <small className="pb-1 text-black-50 d-block">
                       This is an accountant profile
                     </small>
@@ -467,7 +467,7 @@ export default function HeaderDots() {
             <Badge
               anchorOrigin={{
                 vertical: 'top',
-                horizontal: 'right'
+                horizontal: 'right',
               }}
               color="error"
               variant="dot">
@@ -480,11 +480,11 @@ export default function HeaderDots() {
             onClose={handleClose3}
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'center'
+              horizontal: 'center',
             }}
             transformOrigin={{
               vertical: 'top',
-              horizontal: 'center'
+              horizontal: 'center',
             }}>
             <Box className="overflow-hidden border-0 bg-second p-0 dropdown-mega-menu-sm">
               <div className="px-3 py-3 text-center">

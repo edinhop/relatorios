@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, Fragment } from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-
+import { LoginService } from './services/loginService';
 import { ThemeProvider } from '@material-ui/styles';
 
 import { ClimbingBoxLoader } from 'react-spinners';
@@ -242,7 +242,7 @@ const Routes = () => {
               </MinimalLayout>
             </Route>
 
-            <Route
+            <PrivateRoute
               path={[
                 '/DashboardDefault',
                 '/DashboardAnalytics',
@@ -346,7 +346,7 @@ const Routes = () => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route
+                    <PrivateRoute
                       path="/DashboardDefault"
                       component={DashboardDefault}
                     />
@@ -529,12 +529,27 @@ const Routes = () => {
                   </motion.div>
                 </Switch>
               </LeftSidebar>
-            </Route>
+            </PrivateRoute>
           </Switch>
         </Suspense>
       </AnimatePresence>
     </ThemeProvider>
   );
 };
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      LoginService.isAuthenticated() ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{ pathname: '/PagesLogin', state: { from: props.location } }}
+        />
+      )
+    }
+  />
+);
 
 export default Routes;

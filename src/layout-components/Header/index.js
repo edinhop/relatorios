@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 
 import {
   setSidebarToggle,
-  setSidebarToggleMobile
+  setSidebarToggleMobile,
 } from '../../reducers/ThemeOptions';
 import projectLogo from '../../assets/images/react.svg';
 
@@ -37,7 +37,7 @@ const Header = props => {
     sidebarToggleMobile,
     setSidebarToggleMobile,
     setSidebarToggle,
-    sidebarToggle
+    sidebarToggle,
   } = props;
 
   return (
@@ -45,16 +45,14 @@ const Header = props => {
       <AppBar
         color="secondary"
         className={clsx('app-header', {
-          'app-header-collapsed-sidebar': props.isCollapsedLayout
+          'app-header-collapsed-sidebar': props.isCollapsedLayout,
         })}
         position={headerFixed ? 'fixed' : 'absolute'}
         elevation={headerShadow ? 11 : 3}>
         {!props.isCollapsedLayout && <HeaderLogo />}
         <Box className="app-header-toolbar">
           <Hidden lgUp>
-            <Box
-              className="app-logo-wrapper"
-              title="Carolina React Admin Dashboard with Material-UI PRO">
+            <Box className="app-logo-wrapper" title="test">
               <Link to="/DashboardDefault" className="app-logo-link">
                 <IconButton
                   color="primary"
@@ -68,7 +66,7 @@ const Header = props => {
                 </IconButton>
               </Link>
               <Hidden smDown>
-                <Box className="app-logo-text">Carolina</Box>
+                <Box className="app-logo-text">Teste</Box>
               </Hidden>
             </Box>
           </Hidden>
@@ -77,7 +75,7 @@ const Header = props => {
               {!props.isCollapsedLayout && (
                 <Box
                   className={clsx('btn-toggle-collapse', {
-                    'btn-toggle-collapse-closed': sidebarToggle
+                    'btn-toggle-collapse-closed': sidebarToggle,
                   })}>
                   <Tooltip title="Toggle Sidebar" placement="right">
                     <IconButton
@@ -127,12 +125,12 @@ const mapStateToProps = state => ({
   headerShadow: state.ThemeOptions.headerShadow,
   headerFixed: state.ThemeOptions.headerFixed,
   sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
-  sidebarToggle: state.ThemeOptions.sidebarToggle
+  sidebarToggle: state.ThemeOptions.sidebarToggle,
 });
 
 const mapDispatchToProps = dispatch => ({
   setSidebarToggle: enable => dispatch(setSidebarToggle(enable)),
-  setSidebarToggleMobile: enable => dispatch(setSidebarToggleMobile(enable))
+  setSidebarToggleMobile: enable => dispatch(setSidebarToggleMobile(enable)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

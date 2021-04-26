@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-
+import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
@@ -11,7 +11,7 @@ import {
   List,
   ListItem,
   Tooltip,
-  Divider
+  Divider,
 } from '@material-ui/core';
 
 import avatar4 from '../../assets/images/avatars/avatar4.jpg';
@@ -31,21 +31,22 @@ const StyledBadge = withStyles({
       borderRadius: '50%',
       animation: '$ripple 1.2s infinite ease-in-out',
       border: '1px solid currentColor',
-      content: '""'
-    }
+      content: '""',
+    },
   },
   '@keyframes ripple': {
     '0%': {
       transform: 'scale(.8)',
-      opacity: 1
+      opacity: 1,
     },
     '100%': {
       transform: 'scale(2.4)',
-      opacity: 0
-    }
-  }
+      opacity: 0,
+    },
+  },
 })(Badge);
 export default function HeaderUserbox() {
+  const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = event => {
@@ -54,6 +55,11 @@ export default function HeaderUserbox() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const hendleLogout = () => {
+    localStorage.removeItem('TOKEN_KEY');
+    history.replace('/PagesLogin');
   };
 
   return (
@@ -67,7 +73,7 @@ export default function HeaderUserbox() {
             overlap="circle"
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'right'
+              horizontal: 'right',
             }}
             variant="dot">
             <Avatar sizes="44" alt="Dustin Watson" src={avatar4} />
@@ -75,7 +81,7 @@ export default function HeaderUserbox() {
         </Box>
         <div className="d-none d-xl-block pl-3">
           <div className="font-weight-bold pt-2 line-height-1">
-            Dustin Watson
+            Edson Pereira
           </div>
           <span className="text-white-50">Senior React Developer</span>
         </div>
@@ -91,11 +97,11 @@ export default function HeaderUserbox() {
         open={Boolean(anchorEl)}
         anchorOrigin={{
           vertical: 'center',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         transformOrigin={{
           vertical: 'center',
-          horizontal: 'center'
+          horizontal: 'center',
         }}
         onClose={handleClose}
         className="ml-2">
@@ -106,7 +112,7 @@ export default function HeaderUserbox() {
                 overlap="circle"
                 anchorOrigin={{
                   vertical: 'bottom',
-                  horizontal: 'right'
+                  horizontal: 'right',
                 }}
                 variant="dot">
                 <Avatar sizes="44" alt="Dustin Watson" src={avatar4} />
@@ -114,7 +120,7 @@ export default function HeaderUserbox() {
             </Box>
             <div className="pl-3 ">
               <div className="font-weight-bold text-center pt-2 line-height-1">
-                Dustin Watson
+                Edson Pereira
               </div>
               <span className="text-black-50 text-center">
                 Senior React Developer
@@ -124,6 +130,9 @@ export default function HeaderUserbox() {
             <ListItem button>My Account</ListItem>
             <ListItem button>Profile settings</ListItem>
             <ListItem button>Active tasks</ListItem>
+            <ListItem button onClick={hendleLogout}>
+              Logout
+            </ListItem>
             <Divider className="w-100" />
             <ListItem className="p-0">
               <div className="grid-menu grid-menu-2col w-100">

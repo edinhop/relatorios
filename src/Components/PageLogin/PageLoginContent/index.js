@@ -62,9 +62,9 @@ const LivePreviewExample = () => {
     setChecked1(event.target.checked);
   };
 
-  const [email, setEmail] = React.useState('');
+  const [email, setEmail] = React.useState('admin@desbravador.com');
 
-  const [password, setPassword] = React.useState('');
+  const [password, setPassword] = React.useState('123456');
 
   const hasErrors = () => {
     let formErrors = false;
@@ -90,8 +90,12 @@ const LivePreviewExample = () => {
     }
 
     LoginService.login(email, password)
-      .then(() => {
-        history.push('/DashboardDefault');
+      .then(res => {
+        const { token } = res.data;
+        if (token) {
+          localStorage.setItem('TOKEN_KEY', token);
+          history.push('/DashboardDefault');
+        }
       })
       .catch(() => {
         toast.error('Não existe um usuário com este email cadastrado');
