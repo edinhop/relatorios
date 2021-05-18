@@ -1,12 +1,11 @@
-version: "3"
+version: '3'
 
-services: 
+services:
   relatorios:
     build: .
     container_name: relatorios
     tty: true
-    ports: 
-      - "3000:3000"
-    volumes: 
+    ports:
+      - '3000:3000'
+    volumes:
       - ./:/usr/src/app/
-
