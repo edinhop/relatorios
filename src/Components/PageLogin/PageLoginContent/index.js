@@ -1,10 +1,8 @@
 import React from 'react';
 import hero3 from '../../../assets/images/hero-bg/hero-3.jpg';
-import { NavLink as RouterLink } from 'react-router-dom';
+import { NavLink as RouterLink, useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-import { useHistory } from 'react-router-dom';
-import { LoginService } from '../../../services/loginService';
 
 import {
   Grid,
@@ -23,38 +21,10 @@ import {
 import MailOutlineTwoToneIcon from '@material-ui/icons/MailOutlineTwoTone';
 import LockTwoToneIcon from '@material-ui/icons/LockTwoTone';
 
-/*const handleSubmit = e => {
-  e.preventDefault();
-  console.log('cliquei no botao');
-  if (hasErrors(email, password)) return;
-
-  LoginService.login(email, password)
-    .then(res => {
-      console.log(res.data);
-      alert('logou');
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};*/
-
-/*const hasErrors = (email, password) => {
-  let formErrors = false;
-
-  if (!isEmail(email)) {
-    formErrors = true;
-    toast.error('E-mail inválido.');
-  }
-
-  if (password.length < 3 || password.length > 50) {
-    formErrors = true;
-    toast.error('Senha inválida.');
-  }
-
-  return formErrors;
-};*/
+import AuthContext from 'context/auth';
 
 const LivePreviewExample = () => {
+  const { signIn } = React.useContext(AuthContext);
   const history = useHistory();
   const [checked1, setChecked1] = React.useState(true);
 
@@ -63,7 +33,6 @@ const LivePreviewExample = () => {
   };
 
   const [email, setEmail] = React.useState('admin@desbravador.com');
-
   const [password, setPassword] = React.useState('123456');
 
   const hasErrors = () => {
@@ -89,17 +58,23 @@ const LivePreviewExample = () => {
       return false;
     }
 
-    LoginService.login(email, password)
-      .then(res => {
-        const { token } = res.data;
-        if (token) {
-          localStorage.setItem('TOKEN_KEY', token);
-          history.push('/DashboardDefault');
-        }
-      })
-      .catch(() => {
-        toast.error('Não existe um usuário com este email cadastrado');
-      });
+    signIn(email, password)
+      .then(() => history.push('/DashboardDefault'))
+      .catch(msg => toast.error(msg));
+
+    // LoginService.login(email, password)
+    //   .then(res => {
+    //     const { token } = res.data;
+    //     if (token) {
+    //       const decoded = jwt_decode(token);
+    //       console.log(decoded);
+    //       localStorage.setItem('TOKEN_KEY', token);
+    //       history.push('/DashboardDefault');
+    //     }
+    //   })
+    //   .catch(() => {
+    //     toast.error('Não existe um usuário com este email cadastrado');
+    //   });
   };
   return (
     <>

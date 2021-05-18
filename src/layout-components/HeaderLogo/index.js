@@ -16,11 +16,9 @@ const HeaderLogo = props => {
       <div
         className={clsx('app-header-logo', {
           'app-header-logo-close': sidebarToggle,
-          'app-header-logo-open': sidebarHover
+          'app-header-logo-open': sidebarHover,
         })}>
-        <Box
-          className="header-logo-wrapper"
-          title="Carolina React Admin Dashboard with Material-UI PRO">
+        <Box className="header-logo-wrapper" title="Desbravador Software">
           <Link to="/DashboardDefault" className="header-logo-wrapper-link">
             <IconButton
               color="primary"
@@ -28,12 +26,12 @@ const HeaderLogo = props => {
               className="header-logo-wrapper-btn">
               <img
                 className="app-header-logo-img"
-                alt="Carolina React Admin Dashboard with Material-UI PRO"
+                alt="Desbravador Software"
                 src={projectLogo}
               />
             </IconButton>
           </Link>
-          <Box className="header-logo-text">Carolina</Box>
+          <Box className="header-logo-text">Desbravador</Box>
         </Box>
       </div>
     </Fragment>
@@ -42,7 +40,7 @@ const HeaderLogo = props => {
 
 const mapStateToProps = state => ({
   sidebarToggle: state.ThemeOptions.sidebarToggle,
-  sidebarHover: state.ThemeOptions.sidebarHover
+  sidebarHover: state.ThemeOptions.sidebarHover,
 });
 
 export default connect(mapStateToProps)(HeaderLogo);

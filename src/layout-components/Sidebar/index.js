@@ -19,7 +19,7 @@ import {
   setSidebarHover,
   setSidebarToggle,
   setSidebarFooter,
-  setSidebarUserbox
+  setSidebarUserbox,
 } from '../../reducers/ThemeOptions';
 
 const Sidebar = props => {
@@ -33,7 +33,7 @@ const Sidebar = props => {
     sidebarToggle,
     sidebarUserbox,
     sidebarShadow,
-    sidebarFooter
+    sidebarFooter,
   } = props;
 
   const toggleHoverOn = () => setSidebarHover(true);
@@ -44,7 +44,7 @@ const Sidebar = props => {
   const sidebarMenuContent = (
     <div
       className={clsx({
-        'app-sidebar-nav-close': sidebarToggle && !sidebarHover
+        'app-sidebar-nav-close': sidebarToggle && !sidebarHover,
       })}>
       {navItems.map(list => (
         <SidebarMenu
@@ -83,7 +83,7 @@ const Sidebar = props => {
           className={clsx('app-sidebar-wrapper', {
             'app-sidebar-wrapper-close': sidebarToggle,
             'app-sidebar-wrapper-open': sidebarHover,
-            'app-sidebar-wrapper-fixed': sidebarFixed
+            'app-sidebar-wrapper-fixed': sidebarFixed,
           })}
           square
           open={sidebarToggle}
@@ -92,7 +92,7 @@ const Sidebar = props => {
           <div
             className={clsx({
               'app-sidebar-menu': sidebarFixed,
-              'app-sidebar-collapsed': sidebarToggle && !sidebarHover
+              'app-sidebar-collapsed': sidebarToggle && !sidebarHover,
             })}>
             <PerfectScrollbar options={{ wheelPropagation: false }}>
               {sidebarUserbox && <SidebarUserbox />}
@@ -114,7 +114,7 @@ const mapStateToProps = state => ({
   sidebarShadow: state.ThemeOptions.sidebarShadow,
   sidebarFooter: state.ThemeOptions.sidebarFooter,
   sidebarUserbox: state.ThemeOptions.sidebarUserbox,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -122,7 +122,7 @@ const mapDispatchToProps = dispatch => ({
   setSidebarToggle: enable => dispatch(setSidebarToggle(enable)),
   setSidebarHover: enable => dispatch(setSidebarHover(enable)),
   setSidebarFooter: enable => dispatch(setSidebarFooter(enable)),
-  setSidebarUserbox: enable => dispatch(setSidebarUserbox(enable))
+  setSidebarUserbox: enable => dispatch(setSidebarUserbox(enable)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

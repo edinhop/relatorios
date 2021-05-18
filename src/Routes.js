@@ -1,8 +1,9 @@
-import React, { lazy, Suspense, Fragment } from 'react';
+import React, { lazy, Suspense, Fragment, useContext } from 'react';
 import { Switch, Route, Redirect, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { LoginService } from './services/loginService';
 import { ThemeProvider } from '@material-ui/styles';
+
+import AuthContext from 'context/auth';
 
 import { ClimbingBoxLoader } from 'react-spinners';
 
@@ -19,7 +20,7 @@ import {
 // Example Pages
 
 import PagesLogin from './views/Pages/PageLogin';
-import PagesRegister from './views/Pages/PageRegister';
+// import PagesRegister from './views/Pages/PageRegister';
 import PagesRecoverPassword from './views/Pages/PageRecoverPassword';
 import PagesProfile from './example-pages/PagesProfile';
 import PagesInvoice from './example-pages/PagesInvoice';
@@ -149,6 +150,7 @@ const Maps = lazy(() => import('./example-pages/Maps'));
 const ListGroups = lazy(() => import('./example-pages/ListGroups'));
 
 const Routes = () => {
+  const { user } = useContext(AuthContext);
   const location = useLocation();
 
   const pageVariants = {
@@ -172,6 +174,13 @@ const Routes = () => {
     duration: 0.4,
   };
 
+  if (
+    (user.authenticated && location.pathname === '/login') ||
+    location.pathname === '/forgot-password'
+  ) {
+    return <Redirect to="/DashboardDefault" />;
+  }
+
   const SuspenseLoading = () => {
     return (
       <Fragment>
@@ -180,16 +189,16 @@ const Routes = () => {
             <ClimbingBoxLoader color={'#5383ff'} loading={true} />
           </div>
           <div className="text-muted font-size-xl text-center pt-3">
-            Please wait while we load the live preview examples
+            Por favor aguarde
             <span className="font-size-lg d-block text-dark">
-              This live preview instance can be slower than a real production
-              build!
+              Carregando Dashboard
             </span>
           </div>
         </div>
       </Fragment>
     );
   };
+
   return (
     <ThemeProvider theme={MuiTheme}>
       <AnimatePresence>
@@ -213,7 +222,6 @@ const Routes = () => {
 
             <Route
               path={[
-                '/PagesLogin',
                 '/PagesRegister',
                 '/forgot-password',
                 '/PagesError404',
@@ -228,8 +236,7 @@ const Routes = () => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route path="/PagesLogin" component={PagesLogin} />
-                    <Route path="/PagesRegister" component={PagesRegister} />
+                    {/* <Route path="/PagesRegister" component={PagesRegister} /> */}
                     <Route
                       path="/forgot-password"
                       component={PagesRecoverPassword}
@@ -241,7 +248,6 @@ const Routes = () => {
                 </Switch>
               </MinimalLayout>
             </Route>
-
             <PrivateRoute
               path={[
                 '/DashboardDefault',
@@ -347,6 +353,7 @@ const Routes = () => {
                     variants={pageVariants}
                     transition={pageTransition}>
                     <PrivateRoute
+                      user={user}
                       path="/DashboardDefault"
                       component={DashboardDefault}
                     />
@@ -537,15 +544,15 @@ const Routes = () => {
   );
 };
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, user, ...rest }) => (
   <Route
     {...rest}
     render={props =>
-      LoginService.isAuthenticated() ? (
+      user.authenticated ? (
         <Component {...props} />
       ) : (
         <Redirect
-          to={{ pathname: '/PagesLogin', state: { from: props.location } }}
+          to={{ pathname: '/login', state: { from: props.location } }}
         />
       )
     }

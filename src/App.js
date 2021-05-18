@@ -133,6 +133,7 @@ import {
 import ScrollToTop from './utils/ScrollToTop';
 import Routes from './Routes';
 import configureStore from './config/configureStore';
+import { AuthProvider } from 'context/auth';
 
 library.add(
   far,
@@ -264,13 +265,15 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <BrowserRouter>
-          <CssBaseline />
-          <ScrollToTop>
-            <Routes />
-            <ToastContainer autoClose={3000} className="toast-container" />
-          </ScrollToTop>
-        </BrowserRouter>
+        <AuthProvider>
+          <BrowserRouter>
+            <CssBaseline />
+            <ScrollToTop>
+              <Routes />
+              <ToastContainer autoClose={3000} className="toast-container" />
+            </ScrollToTop>
+          </BrowserRouter>
+        </AuthProvider>
       </Provider>
     );
   }

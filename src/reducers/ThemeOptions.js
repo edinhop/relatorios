@@ -11,31 +11,31 @@ export const SET_SIDEBAR_HOVER = 'THEME_OPTIONS/SET_SIDEBAR_HOVER';
 
 export const setSidebarShadow = sidebarShadow => ({
   type: SET_SIDEBAR_SHADOW,
-  sidebarShadow
+  sidebarShadow,
 });
 export const setSidebarFixed = sidebarFixed => ({
   type: SET_SIDEBAR_FIXED,
-  sidebarFixed
+  sidebarFixed,
 });
 export const setSidebarToggleMobile = sidebarToggleMobile => ({
   type: SET_SIDEBAR_TOGGLE_MOBILE,
-  sidebarToggleMobile
+  sidebarToggleMobile,
 });
 export const setSidebarFooter = sidebarFooter => ({
   type: SET_SIDEBAR_FOOTER,
-  sidebarFooter
+  sidebarFooter,
 });
 export const setSidebarToggle = sidebarToggle => ({
   type: SET_SIDEBAR_TOGGLE,
-  sidebarToggle
+  sidebarToggle,
 });
 export const setSidebarHover = sidebarHover => ({
   type: SET_SIDEBAR_HOVER,
-  sidebarHover
+  sidebarHover,
 });
 export const setSidebarUserbox = sidebarUserbox => ({
   type: SET_SIDEBAR_USERBOX,
-  sidebarUserbox
+  sidebarUserbox,
 });
 // Header
 
@@ -45,15 +45,15 @@ export const SET_HEADER_SEARCH_HOVER = 'THEME_OPTIONS/SET_HEADER_SEARCH_HOVER';
 
 export const setHeaderFixed = headerFixed => ({
   type: SET_HEADER_FIXED,
-  headerFixed
+  headerFixed,
 });
 export const setHeaderShadow = headerShadow => ({
   type: SET_HEADER_SHADOW,
-  headerShadow
+  headerShadow,
 });
 export const setHeaderSearchHover = headerSearchHover => ({
   type: SET_HEADER_SEARCH_HOVER,
-  headerSearchHover
+  headerSearchHover,
 });
 
 // Main content
@@ -64,11 +64,11 @@ export const SET_THEME_CONFIGURATOR_TOGGLE =
 
 export const setContentBackground = contentBackground => ({
   type: SET_CONTENT_BACKGROUND,
-  contentBackground
+  contentBackground,
 });
 export const setThemeConfiguratorToggle = themeConfiguratorToggle => ({
   type: SET_THEME_CONFIGURATOR_TOGGLE,
-  themeConfiguratorToggle
+  themeConfiguratorToggle,
 });
 // Footer
 
@@ -76,11 +76,11 @@ export const SET_FOOTER_FIXED = 'THEME_OPTIONS/SET_FOOTER_FIXED';
 export const SET_FOOTER_SHADOW = 'THEME_OPTIONS/SET_FOOTER_SHADOW';
 export const setFooterFixed = footerFixed => ({
   type: SET_FOOTER_FIXED,
-  footerFixed
+  footerFixed,
 });
 export const setFooterShadow = footerShadow => ({
   type: SET_FOOTER_SHADOW,
-  footerShadow
+  footerShadow,
 });
 
 // Page title
@@ -97,27 +97,27 @@ export const SET_PAGE_TITLE_DESCRIPTION =
 
 export const setPageTitleStyle = pageTitleStyle => ({
   type: SET_PAGE_TITLE_STYLE,
-  pageTitleStyle
+  pageTitleStyle,
 });
 export const setPageTitleBackground = pageTitleBackground => ({
   type: SET_PAGE_TITLE_BACKGROUND,
-  pageTitleBackground
+  pageTitleBackground,
 });
 export const setPageTitleShadow = pageTitleShadow => ({
   type: SET_PAGE_TITLE_SHADOW,
-  pageTitleShadow
+  pageTitleShadow,
 });
 export const setPageTitleBreadcrumb = pageTitleBreadcrumb => ({
   type: SET_PAGE_TITLE_BREADCRUMB,
-  pageTitleBreadcrumb
+  pageTitleBreadcrumb,
 });
 export const setPageTitleIconBox = pageTitleIconBox => ({
   type: SET_PAGE_TITLE_ICON_BOX,
-  pageTitleIconBox
+  pageTitleIconBox,
 });
 export const setPageTitleDescription = pageTitleDescription => ({
   type: SET_PAGE_TITLE_DESCRIPTION,
-  pageTitleDescription
+  pageTitleDescription,
 });
 export default function reducer(
   state = {
@@ -151,7 +151,7 @@ export default function reducer(
     pageTitleShadow: false,
     pageTitleBreadcrumb: false,
     pageTitleIconBox: true,
-    pageTitleDescription: true
+    pageTitleDescription: true,
   },
   action
 ) {
@@ -161,54 +161,54 @@ export default function reducer(
     case SET_SIDEBAR_SHADOW:
       return {
         ...state,
-        sidebarShadow: action.sidebarShadow
+        sidebarShadow: action.sidebarShadow,
       };
     case SET_SIDEBAR_FIXED:
       return {
         ...state,
-        sidebarFixed: action.sidebarFixed
+        sidebarFixed: action.sidebarFixed,
       };
     case SET_SIDEBAR_TOGGLE_MOBILE:
       return {
         ...state,
-        sidebarToggleMobile: action.sidebarToggleMobile
+        sidebarToggleMobile: action.sidebarToggleMobile,
       };
     case SET_SIDEBAR_FOOTER:
       return {
         ...state,
-        sidebarFooter: action.sidebarFooter
+        sidebarFooter: action.sidebarFooter,
       };
     case SET_SIDEBAR_TOGGLE:
       return {
         ...state,
-        sidebarToggle: action.sidebarToggle
+        sidebarToggle: action.sidebarToggle,
       };
     case SET_SIDEBAR_HOVER:
       return {
         ...state,
-        sidebarHover: action.sidebarHover
+        sidebarHover: action.sidebarHover,
       };
     case SET_SIDEBAR_USERBOX:
       return {
         ...state,
-        sidebarUserbox: action.sidebarUserbox
+        sidebarUserbox: action.sidebarUserbox,
       };
     // Header
 
     case SET_HEADER_FIXED:
       return {
         ...state,
-        headerFixed: action.headerFixed
+        headerFixed: action.headerFixed,
       };
     case SET_HEADER_SHADOW:
       return {
         ...state,
-        headerShadow: action.headerShadow
+        headerShadow: action.headerShadow,
       };
     case SET_HEADER_SEARCH_HOVER:
       return {
         ...state,
-        headerSearchHover: action.headerSearchHover
+        headerSearchHover: action.headerSearchHover,
       };
 
     // Main content
@@ -216,24 +216,24 @@ export default function reducer(
     case SET_CONTENT_BACKGROUND:
       return {
         ...state,
-        contentBackground: action.contentBackground
+        contentBackground: action.contentBackground,
       };
     case SET_THEME_CONFIGURATOR_TOGGLE:
       return {
         ...state,
-        themeConfiguratorToggle: action.themeConfiguratorToggle
+        themeConfiguratorToggle: action.themeConfiguratorToggle,
       };
     // Footer
 
     case SET_FOOTER_FIXED:
       return {
         ...state,
-        footerFixed: action.footerFixed
+        footerFixed: action.footerFixed,
       };
     case SET_FOOTER_SHADOW:
       return {
         ...state,
-        footerShadow: action.footerShadow
+        footerShadow: action.footerShadow,
       };
 
     // Page title
@@ -241,32 +241,32 @@ export default function reducer(
     case SET_PAGE_TITLE_STYLE:
       return {
         ...state,
-        pageTitleStyle: action.pageTitleStyle
+        pageTitleStyle: action.pageTitleStyle,
       };
     case SET_PAGE_TITLE_BACKGROUND:
       return {
         ...state,
-        pageTitleBackground: action.pageTitleBackground
+        pageTitleBackground: action.pageTitleBackground,
       };
     case SET_PAGE_TITLE_SHADOW:
       return {
         ...state,
-        pageTitleShadow: action.pageTitleShadow
+        pageTitleShadow: action.pageTitleShadow,
       };
     case SET_PAGE_TITLE_BREADCRUMB:
       return {
         ...state,
-        pageTitleBreadcrumb: action.pageTitleBreadcrumb
+        pageTitleBreadcrumb: action.pageTitleBreadcrumb,
       };
     case SET_PAGE_TITLE_ICON_BOX:
       return {
         ...state,
-        pageTitleIconBox: action.pageTitleIconBox
+        pageTitleIconBox: action.pageTitleIconBox,
       };
     case SET_PAGE_TITLE_DESCRIPTION:
       return {
         ...state,
-        pageTitleDescription: action.pageTitleDescription
+        pageTitleDescription: action.pageTitleDescription,
       };
     default:
       break;

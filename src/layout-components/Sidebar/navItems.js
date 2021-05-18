@@ -35,7 +35,7 @@ var iconsMap = {
   PersonIcon: PersonIcon,
   ReceiptIcon: ReceiptIcon,
   SettingsIcon: SettingsIcon,
-  ViewModuleIcon: ViewModuleIcon
+  ViewModuleIcon: ViewModuleIcon,
 };
 
 export default [
@@ -648,6 +648,6 @@ export default [
           return value;
         }
       }
-    )
-  }
+    ),
+  },
 ];

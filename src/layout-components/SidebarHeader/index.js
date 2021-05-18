@@ -27,18 +27,16 @@ const SidebarHeader = props => {
     setSidebarToggleMobile,
     setSidebarToggle,
     sidebarToggle,
-    sidebarHover
+    sidebarHover,
   } = props;
 
   return (
     <Fragment>
       <div
         className={clsx('app-sidebar-header', {
-          'app-sidebar-header-close': sidebarToggle && !sidebarHover
+          'app-sidebar-header-close': sidebarToggle && !sidebarHover,
         })}>
-        <Box
-          className="header-logo-wrapper"
-          title="Carolina React Admin Dashboard with Material-UI PRO">
+        <Box className="header-logo-wrapper" title="Desbravador Software">
           <Link to="/DashboardDefault" className="header-logo-wrapper-link">
             <IconButton
               color="primary"
@@ -46,16 +44,16 @@ const SidebarHeader = props => {
               className="header-logo-wrapper-btn">
               <img
                 className="app-sidebar-logo"
-                alt="Carolina React Admin Dashboard with Material-UI PRO"
+                alt="Desbravador Software"
                 src={projectLogo}
               />
             </IconButton>
           </Link>
-          <Box className="header-logo-text">Carolina</Box>
+          <Box className="header-logo-text">Desbravador</Box>
         </Box>
         <Box
           className={clsx('app-sidebar-header-btn', {
-            'app-sidebar-header-btn-close': sidebarToggle && !sidebarHover
+            'app-sidebar-header-btn-close': sidebarToggle && !sidebarHover,
           })}>
           <Tooltip title="Toggle Sidebar" placement="right">
             <IconButton color="inherit" onClick={toggleSidebar} size="medium">
@@ -84,11 +82,11 @@ const SidebarHeader = props => {
 const mapStateToProps = state => ({
   sidebarToggle: state.ThemeOptions.sidebarToggle,
   sidebarHover: state.ThemeOptions.sidebarHover,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
 });
 
 const mapDispatchToProps = dispatch => ({
-  setSidebarToggleMobile: enable => dispatch(setSidebarToggleMobile(enable))
+  setSidebarToggleMobile: enable => dispatch(setSidebarToggleMobile(enable)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SidebarHeader);

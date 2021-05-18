@@ -14,11 +14,8 @@ import {
 import projectLogo from '../../assets/images/react.svg';
 
 import HeaderLogo from '../../layout-components/HeaderLogo';
-import HeaderDots from '../../layout-components/HeaderDots';
-import HeaderDrawer from '../../layout-components/HeaderDrawer';
+
 import HeaderUserbox from '../../layout-components/HeaderUserbox';
-import HeaderSearch from '../../layout-components/HeaderSearch';
-import HeaderMenu from '../../layout-components/HeaderMenu';
 
 import MenuOpenRoundedIcon from '@material-ui/icons/MenuOpenRounded';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
@@ -52,7 +49,7 @@ const Header = props => {
         {!props.isCollapsedLayout && <HeaderLogo />}
         <Box className="app-header-toolbar">
           <Hidden lgUp>
-            <Box className="app-logo-wrapper" title="test">
+            <Box className="app-logo-wrapper" title="Desbravador">
               <Link to="/DashboardDefault" className="app-logo-link">
                 <IconButton
                   color="primary"
@@ -60,13 +57,13 @@ const Header = props => {
                   className="app-logo-btn">
                   <img
                     className="app-logo-img"
-                    alt="Carolina React Admin Dashboard with Material-UI PRO"
+                    alt="Desbravador Software"
                     src={projectLogo}
                   />
                 </IconButton>
               </Link>
               <Hidden smDown>
-                <Box className="app-logo-text">Teste</Box>
+                <Box className="app-logo-text">Desbravador</Box>
               </Hidden>
             </Box>
           </Hidden>
@@ -77,7 +74,7 @@ const Header = props => {
                   className={clsx('btn-toggle-collapse', {
                     'btn-toggle-collapse-closed': sidebarToggle,
                   })}>
-                  <Tooltip title="Toggle Sidebar" placement="right">
+                  <Tooltip title="menu" placement="right">
                     <IconButton
                       color="inherit"
                       onClick={toggleSidebar}
@@ -92,16 +89,16 @@ const Header = props => {
                   </Tooltip>
                 </Box>
               )}
-              <HeaderSearch />
-              <HeaderMenu />
+              {/* <HeaderSearch />
+              <HeaderMenu /> */}
             </Box>
           </Hidden>
           <Box className="d-flex align-items-center">
-            <HeaderDots />
+            {/* <HeaderDots /> */}
             <HeaderUserbox />
-            <HeaderDrawer />
+            {/* <HeaderDrawer /> */}
             <Box className="toggle-sidebar-btn-mobile">
-              <Tooltip title="Toggle Sidebar" placement="right">
+              <Tooltip title="Menu" placement="right">
                 <IconButton
                   color="inherit"
                   onClick={toggleSidebarMobile}
