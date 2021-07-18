@@ -175,8 +175,8 @@ const Routes = () => {
   };
 
   if (
-    (user.authenticated && location.pathname === '/login') ||
-    location.pathname === '/forgot-password'
+    user.authenticated &&
+    (location.pathname === '/login' || location.pathname === '/forgot-password')
   ) {
     return <Redirect to="/DashboardDefault" />;
   }

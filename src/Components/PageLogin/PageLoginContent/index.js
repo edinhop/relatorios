@@ -61,20 +61,6 @@ const LivePreviewExample = () => {
     signIn(email, password)
       .then(() => history.push('/DashboardDefault'))
       .catch(msg => toast.error(msg));
-
-    // LoginService.login(email, password)
-    //   .then(res => {
-    //     const { token } = res.data;
-    //     if (token) {
-    //       const decoded = jwt_decode(token);
-    //       console.log(decoded);
-    //       localStorage.setItem('TOKEN_KEY', token);
-    //       history.push('/DashboardDefault');
-    //     }
-    //   })
-    //   .catch(() => {
-    //     toast.error('Não existe um usuário com este email cadastrado');
-    //   });
   };
   return (
     <>

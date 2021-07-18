@@ -16,7 +16,7 @@ const Footer = props => {
         elevation={footerShadow ? 11 : 2}
         className={clsx('app-footer text-black-50', {
           'app-footer--fixed': footerFixed,
-          'app-footer--fixed__collapsed': sidebarToggle
+          'app-footer--fixed__collapsed': sidebarToggle,
         })}>
         <div className="app-footer--inner">
           <div className="app-footer--first">
@@ -45,10 +45,10 @@ const Footer = props => {
             </List>
           </div>
           <div className="app-footer--second">
-            <span>Carolina React Admin Dashboard with Material-UI PRO</span> ©
-            2020 - crafted with <span className="text-danger px-1">❤</span> by{' '}
-            <a href="https://uifort.com" title="UiFort.com">
-              UiFort.com
+            <span>Desbravador relatórios</span> © 2020 - criado com{' '}
+            <span className="text-danger px-1">❤</span> by{' '}
+            <a href="https://github.com/thiagoalvesfoz" title="GitHub.com">
+              OpenSource
             </a>
           </div>
         </div>
@@ -60,6 +60,6 @@ const Footer = props => {
 const mapStateToProps = state => ({
   footerFixed: state.ThemeOptions.footerFixed,
   footerShadow: state.ThemeOptions.footerShadow,
-  sidebarToggle: state.ThemeOptions.sidebarToggle
+  sidebarToggle: state.ThemeOptions.sidebarToggle,
 });
 export default connect(mapStateToProps)(Footer);
